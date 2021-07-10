@@ -1,0 +1,17 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+
+    <div style=" color: white; text-align:center; background-color: black; background-size: 20rem;">
+        <h1>HTTP METHOD</h1>
+
+        <form action="/TITAN/introduce/" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-light rounded-pill px-5"; >
+        </form>
+
+        <h3>{{ text }}</h3> 단순 변수 출력 할려면 쌍 중괄호
+    </div>
+
+{% endblock %}

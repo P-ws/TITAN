@@ -1,0 +1,28 @@
+.header_total{
+    color: white;
+    text-align:center;
+    background-color: black;
+    background-size: 20rem;
+    margin: 0rem 22rem;
+}
+
+.header_logo{
+    font-family: 'Baskervville', serif;
+}
+
+.header_menu{
+    text-align: center;
+}
+
+span{
+    margin: 2rem;
+}
+
+.footer_total{
+    text-align: center;
+
+}
+
+.footer_logo{
+    font-family: 'Baskervville', serif;
+}
