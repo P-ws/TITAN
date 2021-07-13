@@ -8,10 +8,14 @@
 
         <form action="/TITAN/introduce/" method="post">
             {% csrf_token %}
+            <input type="text" name = "input_text">
             <input type="submit" class="btn btn-outline-light rounded-pill px-5"; >
         </form>
+        {% for data in data_list %}
 
-        <h3>{{ text }}</h3> 단순 변수 출력 할려면 쌍 중괄호
+        <h3>{{ data.text }}</h3>
+
+        {% endfor %}
     </div>
 
 {% endblock %}
