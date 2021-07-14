@@ -30,5 +30,5 @@ class TitanCreateView(CreateView):
     model = User
     form_class = UserCreationForm
     # lazy 붙인이유: 바로나오는게 아니라 불러와줄때만 사용하기 위해
-    success_url = reverse_lazy('accountapp:hello_world')
-    templates_name = 'accountapp/create.html'
+    success_url = reverse_lazy('TITANAPP:TITAN_Introduce')
+    template_name = 'TITANAPP/create.html'
