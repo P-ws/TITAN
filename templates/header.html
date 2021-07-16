@@ -9,6 +9,22 @@
 <div class="header_menu">
     <span type="button" class="btn btn-outline-secondary"> 봄 </span>
     <span type="button" class="btn btn-outline-secondary">  여름 </span>
-    <span type="button" class="btn btn-outline-secondary">  가을 </span>
-    <span type="button" class="btn btn-outline-secondary"> 겨울 </span>
+   {% if not user.is_authenticated %}
+    <span type="button" class="btn btn-outline-secondary">
+        <a href="{% url 'TITANAPP:login' %}">
+            Login
+        </a>
+    </span>
+    <span type="button" class="btn btn-outline-secondary">
+        <a href="{% url 'TITANAPP:create' %}">
+            Sing up
+        </a>
+    </span>
+    {% else %}
+    <span type="button" class="btn btn-outline-secondary">
+        <a href="{% url 'TITANAPP:logout' %}">
+            Logout
+        </a>
+    </span>
+    {% endif %}
 </div>
