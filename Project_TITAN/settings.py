@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'TITANAPP'
+    'TITANAPP',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
