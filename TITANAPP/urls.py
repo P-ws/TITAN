@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView
 from django.urls import path
 
-from TITANAPP.views import TITAN_Introduce, TitanCreateView, AccountDetailView, AccountUpdateView
+from TITANAPP.views import TITAN_Introduce, TitanCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
 
 app_name = 'TITANAPP'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', LoginView.as_view(), name='logout'),
     path('detail/<int:pk>', AccountDetailView.as_view(), name='detail'),
     path('update/<int:pk>', AccountUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>', AccountDeleteView.as_view(), name='delete'),
  ]
