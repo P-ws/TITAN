@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from TITANAPP.models import NewModel
 
@@ -32,3 +32,17 @@ class TitanCreateView(CreateView):
     # lazy 붙인이유: 바로나오는게 아니라 불러와줄때만 사용하기 위해
     success_url = reverse_lazy('TITANAPP:TITAN_Introduce')
     template_name = 'TITANAPP/create.html'
+
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'TITANAPP/detail.html'
+
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = UserCreationForm
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('TITANAPP:TITAN_Introduce')
+    template_name = 'TITANAPP/update.html'

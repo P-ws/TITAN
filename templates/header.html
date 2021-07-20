@@ -26,5 +26,10 @@
             Logout
         </a>
     </span>
+    <span type="button" class="btn btn-outline-secondary">
+        <a href="{% url 'TITANAPP:detail' pk=user.pk %}">
+            Mypage
+        </a>
+    </span>
     {% endif %}
 </div>
