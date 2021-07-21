@@ -1,19 +1,22 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from TITANAPP.forms import AccountCreationForm
 from TITANAPP.models import NewModel
 
 
-def TITAN_Introduce (requset):
-    if requset.method == "POST":
-        temp = requset.POST.get('input_text')
+@login_required
+def TITAN_Introduce (request):
+    if request.method == "POST":
+        temp = request.POST.get('input_text')
         model_instance = NewModel()
         model_instance.text = temp
         model_instance.save()
@@ -22,7 +25,7 @@ def TITAN_Introduce (requset):
 
     else:
         data_list = NewModel.objects.all()
-        return render(requset, 'TITANAPP/middle.html',
+        return render(request, 'TITANAPP/middle.html',
                       context={'data_list': data_list})
 
 
@@ -41,6 +44,8 @@ class AccountDetailView(DetailView):
     template_name = 'TITANAPP/detail.html'
 
 
+@method_decorator(login_required, 'post')
+@method_decorator(login_required, 'get')
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountCreationForm
@@ -49,8 +54,11 @@ class AccountUpdateView(UpdateView):
     template_name = 'TITANAPP/update.html'
 
 
+@method_decorator(login_required, 'post')
+@method_decorator(login_required, 'get')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('TITANAPP:TITAN_Introduce')
     template_name = 'TITANAPP/delete.html'
+
